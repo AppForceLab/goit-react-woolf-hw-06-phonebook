@@ -2,7 +2,7 @@ const ContactListItem = ({ contact, onDelete }) => {
   return (
     <li>
       {contact.name} - {contact.number}
-      <button onClick={() => onDelete(contact.id)}>Delete</button>
+      <button onClick={onDelete}>Delete</button>
     </li>
   );
 };
