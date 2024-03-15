@@ -1,20 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
 import contactsReducer from './contactsSlice';
 import storage from 'redux-persist/lib/storage';
-import { combineReducers } from "redux";
 import { persistReducer, persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from 'redux-persist';
-
-const rootReducer = combineReducers({
-  contacts: contactsReducer,
-});
 
 const persistConfig = {
   key: 'root',
   storage,
-  whitelist: ['contacts'] 
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
+
+const persistedReducer = persistReducer(persistConfig, contactsReducer);
 
 export const store = configureStore({
   reducer: persistedReducer,
